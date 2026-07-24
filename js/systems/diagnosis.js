@@ -67,8 +67,14 @@ event.dataTransfer.getData("diagnosis");
 
 
 document.getElementById("primaryDiagnosis").innerHTML =
-
 "🥇 " + primaryDiagnosis;
+
+
+
+// Update final diagnosis automatically
+
+document.getElementById("selected").innerHTML =
+"🏆 " + primaryDiagnosis;
 
 
 }
