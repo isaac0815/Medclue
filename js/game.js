@@ -1,14 +1,16 @@
 let score = 0;
 
-let evidence = [];
 
+// Select random case
 
 let currentCase =
 cases[Math.floor(Math.random() * cases.length)];
 
 
 
-// Patient profile
+// =======================
+// Patient Profile
+// =======================
 
 document.getElementById("patient").innerHTML = `
 
@@ -25,111 +27,58 @@ ${currentCase.patient.complaint}
 
 
 
-// Evidence system
 
-function addEvidence(item){
+// =======================
+// Investigation Rooms
+// =======================
 
-evidence.push(item);
-
-
-let board=document.getElementById("evidence");
+let rooms = document.getElementById("rooms");
 
 
-board.innerHTML="";
-
-
-
-evidence.forEach(e=>{
-
-
-let card=document.createElement("div");
-
-
-card.className="evidence-card";
-
-
-card.innerHTML=`
-
-<h3>🧾 ${e.title}</h3>
-
-<p>
-<b>Finding:</b><br>
-${e.finding}
-</p>
-
-
-<p>
-<b>Interpretation:</b><br>
-${e.interpretation}
-</p>
-
-
-<p>
-<b>Diagnostic Strength:</b>
-${"⭐".repeat(e.strength)}
-</p>
-
-
-<p>
-Category:
-${e.category}
-</p>
-
-`;
-
-
-
-board.appendChild(card);
-
-
-});
-
-
-}
-
-
-
-// Create investigation rooms
-
-let rooms=document.getElementById("rooms");
+console.log("Game started");
 
 
 
 function createRoom(name, clues){
 
 
-let button=document.createElement("button");
+    let button = document.createElement("button");
 
 
-button.innerHTML="🚪 Investigate "+name;
-
-
-
-button.onclick=function(){
-
-
-let randomClue =
-clues[Math.floor(Math.random()*clues.length)];
-
-
-addEvidence(randomClue);
-
-
-button.disabled=true;
-
-
-button.innerHTML=
-"✅ "+name+" Investigated";
-
-
-};
+    button.innerHTML = "🚪 Investigate " + name;
 
 
 
-rooms.appendChild(button);
+    button.onclick = function(){
+
+
+        let randomClue =
+        clues[Math.floor(Math.random() * clues.length)];
+
+
+
+        // Send evidence to evidence system
+
+        addEvidence(randomClue);
+
+
+
+        button.disabled = true;
+
+
+        button.innerHTML =
+        "✅ " + name + " Investigated";
+
+
+    };
+
+
+
+    rooms.appendChild(button);
 
 
 }
+
 
 
 
@@ -139,10 +88,12 @@ currentCase.history
 );
 
 
+
 createRoom(
 "Examination Room",
 currentCase.examination
 );
+
 
 
 createRoom(
@@ -152,7 +103,11 @@ currentCase.investigations
 
 
 
-// Diagnosis buttons
+
+// =======================
+// Diagnosis Buttons
+// =======================
+
 
 let optionBox =
 document.getElementById("options");
@@ -162,46 +117,53 @@ document.getElementById("options");
 currentCase.options.forEach(option=>{
 
 
-let button=document.createElement("button");
-
-
-button.textContent=option;
-
-
-
-button.onclick=function(){
-
-
-if(option===currentCase.diagnosis){
-
-score+=100;
-
-
-document.getElementById("result").innerHTML=
-"🏆 Correct Diagnosis! +100 XP";
-
-
-}
-
-else{
-
-
-document.getElementById("result").innerHTML=
-"❌ Wrong Diagnosis. Try again.";
-
-
-}
+    let button =
+    document.createElement("button");
 
 
 
-document.getElementById("score").innerHTML=
-score;
+    button.textContent = option;
 
 
-};
+
+    button.onclick = function(){
 
 
-optionBox.appendChild(button);
+
+        if(option === currentCase.diagnosis){
+
+
+            score += 100;
+
+
+            document.getElementById("result").innerHTML =
+            "🏆 Correct Diagnosis! +100 XP";
+
+
+        }
+
+        else{
+
+
+            document.getElementById("result").innerHTML =
+            "❌ Wrong Diagnosis. Try again.";
+
+
+        }
+
+
+
+        document.getElementById("score").innerHTML =
+        score;
+
+
+
+    };
+
+
+
+    optionBox.appendChild(button);
+
 
 
 });

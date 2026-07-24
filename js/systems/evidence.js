@@ -1,0 +1,49 @@
+let collectedEvidence = [];
+
+
+function addEvidence(evidence){
+
+    collectedEvidence.push(evidence);
+
+    updateEvidenceBoard();
+
+}
+
+
+
+function updateEvidenceBoard(){
+
+    const board =
+    document.getElementById("evidence");
+
+
+    board.innerHTML="";
+
+
+    collectedEvidence.forEach(item=>{
+
+
+        let card=document.createElement("div");
+
+
+        card.className="evidence-card";
+
+
+        card.innerHTML=`
+
+        <h3>🧾 ${item.title}</h3>
+
+        <p>
+        ${item.finding}
+        </p>
+
+        `;
+
+
+        board.appendChild(card);
+
+
+    });
+
+
+}
