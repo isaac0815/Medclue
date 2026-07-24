@@ -82,17 +82,48 @@ function createRoom(name, clues){
 
 
 
-createRoom(
-"History Room",
-currentCase.history
-);
+let historyButton =
+document.createElement("button");
+
+
+historyButton.innerHTML =
+"🚪 Enter History Room";
+
+
+historyButton.onclick=function(){
+
+startHistoryTaking();
+
+historyButton.disabled=true;
+
+};
+
+
+rooms.appendChild(historyButton);
 
 
 
-createRoom(
-"Examination Room",
-currentCase.examination
-);
+let examinationButton =
+document.createElement("button");
+
+
+examinationButton.innerHTML =
+"🚪 Enter Examination Room";
+
+
+examinationButton.onclick=function(){
+
+startExamination();
+
+examinationButton.disabled=true;
+
+examinationButton.innerHTML =
+"✅ Examination Completed";
+
+};
+
+
+rooms.appendChild(examinationButton);
 
 
 
