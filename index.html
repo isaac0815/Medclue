@@ -41,11 +41,41 @@ Drag possible diagnoses here:
 <div id="diagnosis"></div>
 
 
-<div id="selected"
-ondragover="event.preventDefault()"
-ondrop="dropDiagnosis(event)">
+<div class="diagnosis-board">
 
-Drop diagnosis here
+
+<h4>🥇 Most Likely Diagnosis</h4>
+
+<div id="primaryDiagnosis"
+ondragover="event.preventDefault()"
+ondrop="dropPrimary(event)">
+
+Drop here
+
+</div>
+
+
+
+<h4>🥈 Other Differentials</h4>
+
+<div id="secondaryDiagnosis"
+ondragover="event.preventDefault()"
+ondrop="dropSecondary(event)">
+
+Drop here
+
+</div>
+
+
+
+<h4>🏆 Final Decision</h4>
+
+<div id="selected">
+
+No diagnosis selected
+
+</div>
+
 
 </div>
 

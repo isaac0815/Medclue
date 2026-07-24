@@ -1,5 +1,9 @@
 let selectedDiagnosis = null;
 
+let primaryDiagnosis = null;
+
+let secondaryDiagnosis = [];
+
 
 
 function loadDifferentialDiagnosis(){
@@ -7,6 +11,7 @@ function loadDifferentialDiagnosis(){
 
 let diagnosisBox =
 document.getElementById("diagnosis");
+
 
 diagnosisBox.innerHTML="";
 
@@ -52,20 +57,40 @@ diagnosisBox.appendChild(card);
 
 
 
-function dropDiagnosis(event){
-
+function dropPrimary(event){
 
 event.preventDefault();
 
 
-selectedDiagnosis =
+primaryDiagnosis =
 event.dataTransfer.getData("diagnosis");
 
 
+document.getElementById("primaryDiagnosis").innerHTML =
 
-document.getElementById("selected").innerHTML=
+"🥇 " + primaryDiagnosis;
 
-"Selected: 🧠 " + selectedDiagnosis;
+
+}
+
+
+
+function dropSecondary(event){
+
+event.preventDefault();
+
+
+let diagnosis =
+event.dataTransfer.getData("diagnosis");
+
+
+secondaryDiagnosis.push(diagnosis);
+
+
+document.getElementById("secondaryDiagnosis").innerHTML =
+
+secondaryDiagnosis.join("<br>");
+
 
 
 }
@@ -76,18 +101,23 @@ document.getElementById("selected").innerHTML=
 function submitDiagnosis(){
 
 
+selectedDiagnosis = primaryDiagnosis;
+
+
+
 let result =
 document.getElementById("result");
 
 
-if(selectedDiagnosis===currentCase.diagnosis){
+
+if(selectedDiagnosis === currentCase.diagnosis){
 
 
-score+=100;
+score +=100;
 
 
 result.innerHTML =
-"🏆 Correct Diagnosis +100 XP";
+"🏆 Correct primary diagnosis +100 XP";
 
 
 }
@@ -96,7 +126,7 @@ else{
 
 
 result.innerHTML =
-"❌ Incorrect Diagnosis";
+"❌ Primary diagnosis incorrect";
 
 
 }

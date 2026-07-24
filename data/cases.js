@@ -69,25 +69,29 @@ const cases = [
 
     {
         name:"STEMI",
-        correct:true
+        correct:true,
+        priority:5
     },
 
 
     {
         name:"Pulmonary Embolism",
-        correct:false
+        correct:false,
+        priority:2
     },
 
 
     {
         name:"Acute Pericarditis",
-        correct:false
+        correct:false,
+        priority:1
     },
 
 
     {
         name:"Aortic Dissection",
-        correct:false
+        correct:false,
+        priority:3
     }
 
 ]
