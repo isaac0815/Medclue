@@ -25,7 +25,7 @@ ${currentCase.patient.complaint}
 
 `;
 
-
+loadDifferentialDiagnosis();
 
 
 // =======================
@@ -127,74 +127,34 @@ rooms.appendChild(examinationButton);
 
 
 
-createRoom(
-"Laboratory",
-currentCase.investigations
-);
+let investigationButton =
+document.createElement("button");
+
+
+investigationButton.innerHTML =
+"🚪 Enter Investigation Room";
+
+
+investigationButton.onclick=function(){
+
+startInvestigation();
+
+
+investigationButton.disabled=true;
+
+
+investigationButton.innerHTML =
+"✅ Investigations Completed";
+
+
+};
+
+
+rooms.appendChild(investigationButton);
 
 
 
 
-// =======================
-// Diagnosis Buttons
-// =======================
-
-
-let optionBox =
-document.getElementById("options");
 
 
 
-currentCase.options.forEach(option=>{
-
-
-    let button =
-    document.createElement("button");
-
-
-
-    button.textContent = option;
-
-
-
-    button.onclick = function(){
-
-
-
-        if(option === currentCase.diagnosis){
-
-
-            score += 100;
-
-
-            document.getElementById("result").innerHTML =
-            "🏆 Correct Diagnosis! +100 XP";
-
-
-        }
-
-        else{
-
-
-            document.getElementById("result").innerHTML =
-            "❌ Wrong Diagnosis. Try again.";
-
-
-        }
-
-
-
-        document.getElementById("score").innerHTML =
-        score;
-
-
-
-    };
-
-
-
-    optionBox.appendChild(button);
-
-
-
-});

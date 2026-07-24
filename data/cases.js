@@ -65,12 +65,32 @@ const cases = [
     ],
 
 
-    options:[
-        "STEMI",
-        "Pulmonary Embolism",
-        "Acute Pericarditis",
-        "Aortic Dissection"
-    ]
+   differentials:[
+
+    {
+        name:"STEMI",
+        correct:true
+    },
+
+
+    {
+        name:"Pulmonary Embolism",
+        correct:false
+    },
+
+
+    {
+        name:"Acute Pericarditis",
+        correct:false
+    },
+
+
+    {
+        name:"Aortic Dissection",
+        correct:false
+    }
+
+]
 
 }
 

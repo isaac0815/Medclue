@@ -5,6 +5,14 @@
 
 <title>MedClue - Medical Detective Academy</title>
 
+<div class="card">
+
+<h3>📁 Case File</h3>
+
+<div id="patient"></div>
+
+</div>
+
 <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -23,9 +31,29 @@
 
 <div class="card">
 
-<h3>📁 Case File</h3>
+<h3>🧠 Differential Diagnosis</h3>
 
-<div id="patient"></div>
+<p>
+Drag possible diagnoses here:
+</p>
+
+
+<div id="diagnosis"></div>
+
+
+<div id="selected"
+ondragover="event.preventDefault()"
+ondrop="dropDiagnosis(event)">
+
+Drop diagnosis here
+
+</div>
+
+
+<button onclick="submitDiagnosis()">
+Submit Diagnosis
+</button>
+
 
 </div>
 
@@ -39,6 +67,7 @@
 
 <div id="history"></div>
 <div id="examination"></div>
+<div id="investigation"></div>
 
 </div>
 
@@ -61,7 +90,7 @@
 
 <h3>🧠 Final Diagnosis</h3>
 
-<div id="options"></div>
+
 
 </div>
 
@@ -85,7 +114,11 @@
 <script src="js/systems/evidence.js"></script>
 
 <script src="js/systems/history.js"></script>
+
 <script src="js/systems/examination.js"></script>
+
+<script src="js/systems/investigation.js"></script>
+<script src="js/systems/diagnosis.js"></script>
 
 <script src="js/game.js"></script>
 
