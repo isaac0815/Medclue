@@ -34,9 +34,20 @@ function updateEvidenceBoard(){
         <h3>🧾 ${item.title}</h3>
 
         <p>
+        <b>Finding:</b><br>
         ${item.finding}
         </p>
 
+        <p>
+        <b>Supports:</b><br>
+         ${item.supports.join(",")}
+        </p>
+
+        
+
+      
+
+        
         `;
 
 

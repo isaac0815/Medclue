@@ -14,87 +14,122 @@ const cases = [
 
         {
             title:"Chest pain history",
+
             finding:"Pain radiates to left arm",
-            interpretation:"Suggests cardiac ischemia",
+
             strength:4,
-            category:"History"
+
+            category:"History",
+
+            supports:[
+                "STEMI"
+            ]
         },
+
 
         {
             title:"Risk factors",
+
             finding:"Patient is diabetic and smoker",
-            interpretation:"Increases risk of coronary artery disease",
+
             strength:3,
-            category:"History"
+
+            category:"History",
+
+            supports:[
+                "STEMI"
+            ]
         }
 
     ],
+
 
 
     examination:[
 
         {
             title:"Vital signs",
+
             finding:"Blood pressure 160/90 mmHg",
-            interpretation:"Possible cardiovascular stress",
+
             strength:2,
-            category:"Examination"
+
+            category:"Examination",
+
+            supports:[
+                "STEMI"
+            ]
         }
 
     ],
+
 
 
     investigations:[
 
         {
             title:"ECG",
+
             finding:"ST elevation detected",
-            interpretation:"Suggests acute myocardial infarction",
+
             strength:5,
-            category:"Investigation"
+
+            category:"Investigation",
+
+            supports:[
+                "STEMI"
+            ]
         },
+
 
         {
             title:"Troponin",
+
             finding:"Troponin level elevated",
-            interpretation:"Indicates myocardial injury",
+
             strength:5,
-            category:"Investigation"
+
+            category:"Investigation",
+
+            supports:[
+                "STEMI"
+            ]
         }
 
     ],
 
 
-   differentials:[
 
-    {
-        name:"STEMI",
-        correct:true,
-        priority:5
-    },
+    differentials:[
 
-
-    {
-        name:"Pulmonary Embolism",
-        correct:false,
-        priority:2
-    },
+        {
+            name:"STEMI",
+            correct:true,
+            priority:5
+        },
 
 
-    {
-        name:"Acute Pericarditis",
-        correct:false,
-        priority:1
-    },
+        {
+            name:"Aortic Dissection",
+            correct:false,
+            priority:3
+        },
 
 
-    {
-        name:"Aortic Dissection",
-        correct:false,
-        priority:3
-    }
+        {
+            name:"Pulmonary Embolism",
+            correct:false,
+            priority:2
+        },
 
-]
+
+        {
+            name:"Acute Pericarditis",
+            correct:false,
+            priority:1
+        }
+
+    ]
 
 }
 
