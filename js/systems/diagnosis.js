@@ -1,3 +1,8 @@
+// =============================
+// MedClue Diagnosis System
+// =============================
+
+
 let selectedDiagnosis = null;
 
 let primaryDiagnosis = null;
@@ -6,143 +11,173 @@ let secondaryDiagnosis = [];
 
 
 
+
+// Load diagnosis cards
+
 function loadDifferentialDiagnosis(){
 
 
-let diagnosisBox =
-document.getElementById("diagnosis");
+    let diagnosisBox =
+    document.getElementById("diagnosis");
 
 
-diagnosisBox.innerHTML="";
-
-
-
-currentCase.differentials.forEach(item=>{
-
-
-let card =
-document.createElement("div");
-
-
-card.className="diagnosis-card";
-
-
-card.draggable=true;
-
-
-card.innerHTML =
-"🧠 " + item.name;
+    diagnosisBox.innerHTML="";
 
 
 
-card.ondragstart=function(event){
-
-event.dataTransfer.setData(
-"diagnosis",
-item.name
-);
-
-};
+    currentCase.differentials.forEach(item=>{
 
 
+        let card =
+        document.createElement("div");
 
-diagnosisBox.appendChild(card);
+
+        card.className="diagnosis-card";
 
 
-});
+        card.draggable=true;
+
+
+        card.innerHTML =
+        "🧠 " + item.name;
+
+
+
+        card.ondragstart=function(event){
+
+
+            event.dataTransfer.setData(
+                "diagnosis",
+                item.name
+            );
+
+
+        };
+
+
+
+        diagnosisBox.appendChild(card);
+
+
+    });
 
 
 }
 
 
 
+
+// Drop primary diagnosis
 
 function dropPrimary(event){
 
-event.preventDefault();
+
+    event.preventDefault();
 
 
-primaryDiagnosis =
-event.dataTransfer.getData("diagnosis");
-
-
-document.getElementById("primaryDiagnosis").innerHTML =
-"🥇 " + primaryDiagnosis;
+    primaryDiagnosis =
+    event.dataTransfer.getData("diagnosis");
 
 
 
-// Update final diagnosis automatically
+    document.getElementById("primaryDiagnosis").innerHTML =
 
-document.getElementById("selected").innerHTML =
-"🏆 " + primaryDiagnosis;
+    "🥇 " + primaryDiagnosis;
+
+
+
+    document.getElementById("selected").innerHTML =
+
+    "🏆 " + primaryDiagnosis;
 
 
 }
 
 
+
+
+
+// Drop secondary diagnosis
 
 function dropSecondary(event){
 
-event.preventDefault();
+
+    event.preventDefault();
 
 
-let diagnosis =
-event.dataTransfer.getData("diagnosis");
+    let diagnosis =
+    event.dataTransfer.getData("diagnosis");
 
 
-secondaryDiagnosis.push(diagnosis);
+
+    secondaryDiagnosis.push(diagnosis);
 
 
-document.getElementById("secondaryDiagnosis").innerHTML =
 
-secondaryDiagnosis.join("<br>");
+    document.getElementById("secondaryDiagnosis").innerHTML =
 
+    secondaryDiagnosis.join("<br>");
 
 
 }
 
 
 
+
+// Submit final diagnosis
 
 function submitDiagnosis(){
 
 
-selectedDiagnosis = primaryDiagnosis;
+    selectedDiagnosis = primaryDiagnosis;
 
 
 
-let result =
-document.getElementById("result");
+    let result =
+    document.getElementById("result");
 
 
 
-if(selectedDiagnosis === currentCase.diagnosis){
+    let correct =
+    selectedDiagnosis === currentCase.diagnosis;
 
 
-    let diagnosisResult =
-    calculateDiagnosisScore(selectedDiagnosis);
+
+    // Send to scoring engine
+
+    awardDiagnosisScore(correct);
 
 
-    result.innerHTML =
-    "🏆 " + diagnosisResult;
+
+    if(correct){
+
+
+        result.innerHTML =
+        "🏆 Correct diagnosis!";
+
+
+    }
+
+    else{
+
+
+        result.innerHTML =
+        "❌ Incorrect diagnosis";
+
+
+    }
+
+
+
+    let performance =
+    calculateClinicalPerformance();
+
+
+
+    console.log(
+        "Clinical Performance:",
+        performance + "%"
+    );
 
 
 }
-
-else{
-
-
-    let diagnosisResult =
-    calculateDiagnosisScore(selectedDiagnosis);
-
-
-    result.innerHTML =
-    "❌ " + diagnosisResult;
-
-
-}
-
-
-
-document.getElementById("score").innerHTML =
-score;

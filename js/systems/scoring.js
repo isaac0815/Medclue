@@ -1,82 +1,90 @@
-let clinicalScore = 0;
+// =============================
+// MedClue Clinical Scoring
+// =============================
 
 
-function calculateDiagnosisScore(selectedDiagnosis){
+function awardDiagnosisScore(correct){
 
 
-    if(selectedDiagnosis === currentCase.diagnosis){
+    if(correct){
 
-        clinicalScore += 40;
-
-        return "Diagnosis correct +40%";
+        gameState.score.diagnosis = 40;
 
     }
 
     else{
 
-        clinicalScore += 0;
-
-        return "Diagnosis incorrect +0%";
+        gameState.score.diagnosis = 0;
 
     }
+
+
+    updatePerformance();
+
 
 }
 
 
 
-function calculateEvidenceScore(){
+
+function awardEvidenceScore(){
 
 
-    let evidenceScore = 0;
+    let total = 0;
 
 
-    evidence.forEach(item=>{
+    gameState.evidence.forEach(item=>{
 
 
-        if(item.strength >= 5){
-
-            evidenceScore += 10;
-
-        }
-
-        else if(item.strength >= 3){
-
-            evidenceScore += 5;
-
-        }
-
-        else{
-
-            evidenceScore += 2;
-
-        }
+        total += item.strength || 0;
 
 
     });
 
 
 
-    clinicalScore += evidenceScore;
+    gameState.score.evidence =
+    Math.min(total,30);
 
 
-    return "Evidence gathering +" + evidenceScore + "%";
+
+    updatePerformance();
+
 
 }
 
 
 
 
-function getClinicalScore(){
+function updatePerformance(){
 
 
-    if(clinicalScore > 100){
+    let total =
 
-        clinicalScore = 100;
+    gameState.score.diagnosis +
+
+    gameState.score.evidence +
+
+    gameState.score.reasoning +
+
+    gameState.score.management;
+
+
+
+    gameState.clinicalPerformance = total;
+
+
+
+    let display =
+    document.getElementById("performance");
+
+
+    if(display){
+
+        display.innerHTML =
+        total;
 
     }
-
-
-    return clinicalScore;
 
 
 }

@@ -3,8 +3,9 @@ let score = 0;
 
 // Select random case
 
-let currentCase =
-cases[Math.floor(Math.random() * cases.length)];
+loadRandomCase();
+
+let currentCase = getCurrentCase();
 
 
 
