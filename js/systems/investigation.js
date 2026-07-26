@@ -2,32 +2,105 @@ let investigationOptions = [
 
 {
 name:"ECG",
-finding:"ECG performed and cardiac rhythm assessed",
-strength:2
+
+category:"Cardiac Test",
+
+result:
+"ST elevation in leads II, III, aVF",
+
+reference:
+"No ST elevation expected",
+
+strength:5,
+
+supports:[
+"STEMI"
+]
+
 },
+
+
+
+{
+name:"Troponin I",
+
+category:"Blood Test",
+
+result:
+"Troponin I: 250 ng/L",
+
+reference:
+"Normal: <14 ng/L",
+
+strength:5,
+
+supports:[
+"STEMI"
+]
+
+},
+
+
 
 {
 name:"Full Blood Count",
-finding:"Blood cell profile obtained",
-strength:1
+
+category:"Blood Test",
+
+result:
+"WBC: 8.5 x10⁹/L",
+
+reference:
+"Normal: 4-11 x10⁹/L",
+
+strength:1,
+
+supports:[
+""
+]
+
 },
 
-{
-name:"Troponin",
-finding:"Cardiac biomarker level obtained",
-strength:3
-},
+
 
 {
 name:"Chest X-Ray",
-finding:"Chest imaging findings obtained",
-strength:2
+
+category:"Imaging",
+
+result:
+"No acute lung infiltrates",
+
+reference:
+"Normal chest appearance",
+
+strength:1,
+
+supports:[
+""
+]
+
 },
+
+
 
 {
 name:"CT Scan",
-finding:"Cross-sectional imaging findings obtained",
-strength:2
+
+category:"Imaging",
+
+result:
+"No aortic dissection seen",
+
+reference:
+"Normal aorta",
+
+strength:2,
+
+supports:[
+"Aortic Dissection"
+]
+
 }
 
 ];
@@ -62,11 +135,17 @@ button.onclick=function(){
 
 addEvidence({
 
-title:"Investigation Result",
+title:test.name,
 
-finding:test.finding,
+category:test.category,
 
-strength:test.strength
+finding:test.result,
+
+reference:test.reference,
+
+strength:test.strength,
+
+supports:test.supports
 
 });
 

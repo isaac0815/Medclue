@@ -45,12 +45,12 @@ function updateEvidenceBoard(){
         <b>Finding:</b><br>
         ${item.finding}
         </p>
-
-
         <p>
-        <b>Supports:</b><br>
-        ${item.supports ? item.supports.join(", ") : "Pending interpretation"}
+        <b>Reference:</b><br>
+        ${item.reference || "Not provided"}
         </p>
+
+        
 
 
         `;
