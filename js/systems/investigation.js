@@ -3,7 +3,7 @@ let investigationOptions = [
 {
 name:"ECG",
 
-category:"Cardiac Test",
+category:"Investigation",
 
 result:
 "ST elevation in leads II, III, aVF",
@@ -24,7 +24,7 @@ supports:[
 {
 name:"Troponin I",
 
-category:"Blood Test",
+category:"Investigation",
 
 result:
 "Troponin I: 250 ng/L",
@@ -45,7 +45,7 @@ supports:[
 {
 name:"Full Blood Count",
 
-category:"Blood Test",
+category:"Investigation",
 
 result:
 "WBC: 8.5 x10⁹/L",
@@ -66,7 +66,7 @@ supports:[
 {
 name:"Chest X-Ray",
 
-category:"Imaging",
+category:"Investigation",
 
 result:
 "No acute lung infiltrates",
@@ -87,7 +87,7 @@ supports:[
 {
 name:"CT Scan",
 
-category:"Imaging",
+category:"Investigation",
 
 result:
 "No aortic dissection seen",
