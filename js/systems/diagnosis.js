@@ -119,11 +119,12 @@ document.getElementById("result");
 if(selectedDiagnosis === currentCase.diagnosis){
 
 
-score +=100;
+    let diagnosisResult =
+    calculateDiagnosisScore(selectedDiagnosis);
 
 
-result.innerHTML =
-"🏆 Correct primary diagnosis +100 XP";
+    result.innerHTML =
+    "🏆 " + diagnosisResult;
 
 
 }
@@ -131,8 +132,12 @@ result.innerHTML =
 else{
 
 
-result.innerHTML =
-"❌ Primary diagnosis incorrect";
+    let diagnosisResult =
+    calculateDiagnosisScore(selectedDiagnosis);
+
+
+    result.innerHTML =
+    "❌ " + diagnosisResult;
 
 
 }
@@ -141,6 +146,3 @@ result.innerHTML =
 
 document.getElementById("score").innerHTML =
 score;
-
-
-}
