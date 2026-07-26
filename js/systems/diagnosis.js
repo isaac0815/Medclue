@@ -157,8 +157,16 @@ function submitDiagnosis(){
 
 
     }
+    let consultantFeedback =
+    generateConsultantFeedback();
 
-    else{
+
+    document.getElementById("feedback").innerHTML =
+
+    consultantFeedback.join("<br><br>");
+
+    
+    {
 
 
         result.innerHTML =
