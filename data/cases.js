@@ -1,18 +1,37 @@
 const cases = [
 
 {
+
+    id:"CARD001",
+
+    title:"Acute ST-Elevation Myocardial Infarction",
+
+    specialty:"Cardiology",
+
+    system:"Cardiovascular",
+
+    difficulty:"Intermediate",
+
+    triage:"🔴 RED",
+
     diagnosis:"STEMI",
 
+
     patient:{
+
         age:55,
+
         sex:"Male",
-        complaint:"Severe crushing chest pain"
+
+        chiefComplaint:"Severe crushing chest pain"
+
     },
 
 
     history:[
 
         {
+
             title:"Chest pain history",
 
             finding:"Pain radiates to left arm",
@@ -24,10 +43,12 @@ const cases = [
             supports:[
                 "STEMI"
             ]
+
         },
 
 
         {
+
             title:"Risk factors",
 
             finding:"Patient is diabetic and smoker",
@@ -39,6 +60,7 @@ const cases = [
             supports:[
                 "STEMI"
             ]
+
         }
 
     ],
@@ -48,17 +70,17 @@ const cases = [
     examination:[
 
         {
+
             title:"Vital signs",
 
             finding:"Blood pressure 160/90 mmHg",
 
+            interpretation:"Possible cardiovascular stress",
+
             strength:2,
 
-            category:"Examination",
+            category:"Examination"
 
-            supports:[
-                "STEMI"
-            ]
         }
 
     ],
@@ -67,11 +89,15 @@ const cases = [
 
     investigations:[
 
+
         {
+
             title:"ECG",
 
             finding:"ST elevation detected",
 
+            reference:"No ST elevation expected",
+
             strength:5,
 
             category:"Investigation",
@@ -79,13 +105,17 @@ const cases = [
             supports:[
                 "STEMI"
             ]
+
         },
 
 
         {
-            title:"Troponin",
 
-            finding:"Troponin level elevated",
+            title:"Troponin I",
+
+            finding:"Troponin I: 250 ng/L",
+
+            reference:"Normal: <14 ng/L",
 
             strength:5,
 
@@ -94,7 +124,9 @@ const cases = [
             supports:[
                 "STEMI"
             ]
+
         }
+
 
     ],
 
@@ -102,34 +134,96 @@ const cases = [
 
     differentials:[
 
+
         {
+
             name:"STEMI",
+
             correct:true,
+
             priority:5
+
         },
 
 
         {
+
             name:"Aortic Dissection",
+
             correct:false,
+
             priority:3
+
         },
 
 
         {
+
             name:"Pulmonary Embolism",
+
             correct:false,
+
             priority:2
+
         },
 
 
         {
+
             name:"Acute Pericarditis",
+
             correct:false,
+
             priority:1
+
         }
 
+
+    ],
+
+
+
+    management:[
+
+
+        {
+
+            name:"Give Aspirin and activate PCI pathway",
+
+            correct:true
+
+        },
+
+
+        {
+
+            name:"Discharge patient with antacid",
+
+            correct:false
+
+        },
+
+
+        {
+
+            name:"Start antibiotics",
+
+            correct:false
+
+        },
+
+
+        {
+
+            name:"Observe at home",
+
+            correct:false
+
+        }
+
+
     ]
+
 
 }
 

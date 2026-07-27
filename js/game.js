@@ -3,40 +3,50 @@ let score = 0;
 
 // Select random case
 
-loadRandomCase();
-
-let currentCase = getCurrentCase();
-
+let currentCase = null;
 
 
 // =======================
-// Patient Profile
+// Start Selected Case
 // =======================
 
-document.getElementById("patient").innerHTML = `
-
-<p>
-👤 ${currentCase.patient.age} year old ${currentCase.patient.sex}
-</p>
-
-<p>
-Chief Complaint:
-${currentCase.patient.complaint}
-</p>
-
-`;
-
-loadDifferentialDiagnosis();
+function startCase(){
 
 
-// =======================
-// Investigation Rooms
-// =======================
-
-let rooms = document.getElementById("rooms");
+    console.log("Starting case:", currentCase.title);
 
 
-console.log("Game started");
+
+    // Patient Profile
+
+    document.getElementById("patient").innerHTML = `
+
+    <p>
+    👤 ${currentCase.patient.age} year old ${currentCase.patient.sex}
+    </p>
+
+    <p>
+    Chief Complaint:
+    ${currentCase.patient.chiefComplaint}
+    </p>
+
+    `;
+
+
+
+    loadDifferentialDiagnosis();
+
+    loadManagement();
+
+
+    let rooms =
+    document.getElementById("rooms");
+
+
+    console.log("Case loaded");
+
+
+}
 
 
 
@@ -155,7 +165,13 @@ rooms.appendChild(investigationButton);
 
 
 
+console.log(getSpecialties());
+
+console.log(getCasesBySpecialty("Cardiology"));
+
+console.log(getCaseById("CARD001"));
 
 
+console.log("Starting dashboard");
 
-
+loadDashboard();
